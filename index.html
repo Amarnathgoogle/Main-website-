@@ -24,63 +24,57 @@
             height: auto;
             position: absolute;
             top: 50%;
-            left: -60px;
-            animation: slideFromLeft 3s ease-in-out forwards, turnIntoCircle 1s ease-in-out 3s forwards, slideUp 2s ease-in-out 4s forwards;
+            left: calc(50% - 30px);
+            animation: slideAndTransform 3s ease-in-out forwards, slideUpFromMiddle 2s ease-in-out 3s forwards;
         }
 
-        @keyframes slideFromLeft {
+        @keyframes slideAndTransform {
             0% { left: -60px; }
             50% { left: calc(50% - 30px); }
-            100% { left: calc(50% - 30px); }
+            100% { transform: translateY(-50%) scale(0.5); }
         }
 
-        @keyframes turnIntoCircle {
-            0% { transform: scale(1); border-radius: 0%; }
-            100% { transform: scale(1); border-radius: 50%; }
-        }
-
-        @keyframes slideUp {
+        @keyframes slideUpFromMiddle {
             0% { opacity: 0; top: 100%; }
             100% { opacity: 1; top: 10%; }
         }
 
         #black-box {
             width: 300px;
-            height: 150px;
             background-color: black;
             color: white;
             position: absolute;
             bottom: 0;
             opacity: 0;
-            animation: slideUpBlackBox 2s ease-in-out 4s forwards;
-            overflow: hidden;
+            animation: slideUpBlackBox 2s ease-in-out 3s forwards;
+            padding: 20px;
         }
 
         @keyframes slideUpBlackBox {
-            0% { opacity: 0; bottom: -150px; }
+            0% { opacity: 0; bottom: -100px; }
             100% { opacity: 1; bottom: 50%; }
         }
 
-        .typing-animation {
-            animation: typing 2s steps(12, end) forwards;
-            white-space: nowrap;
+        #black-box p {
+            margin: 5px 0;
             overflow: hidden;
-            border-right: 2px solid white;
+            white-space: nowrap;
+            animation: revealText 1s forwards;
         }
 
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
+        @keyframes revealText {
+            0% { width: 0; }
+            100% { width: 100%; }
         }
     </style>
 </head>
 <body>
     <img id="discord-logo" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/2a92a626bd0baf66285bb1ba538531c3.png" alt="Discord Logo">
     <div id="black-box">
-        <p>Name: <span class="typing-animation">Google</span></p>
-        <p>Age: <span class="typing-animation">17</span></p>
-        <p>Likes: <span class="typing-animation">to code</span></p>
-        <p>Games: <span class="typing-animation">myuu , owo , dank memer</span></p>
+        <p>Name: Google</p>
+        <p>Age: 17</p>
+        <p>Likes: to code</p>
+        <p>Games: myuu, owo, dank memer</p>
     </div>
 </body>
 </html>
