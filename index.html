@@ -8,7 +8,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-image: url('https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/e23817f641839282ad7fefa60c0ea996.gif');
+            background-image: url('https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/408a8850773a9b5de794b66d7aceb88b.gif');
             background-size: contain; /* Change 'contain' to 'cover' if you want to zoom out */
             background-position: center;
             height: 100vh;
@@ -16,10 +16,11 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            position: relative; /* Needed for positioning the logo and button */
         }
 
         #discord-logo {
-            width: 100px; /* Adjust size as needed */
+            width: 80px; /* Adjust size as needed */
             height: auto;
             position: absolute;
             top: 10px;
@@ -29,17 +30,20 @@
         #discord-button {
             padding: 10px 20px;
             font-size: 18px;
-            background-color: #7289DA; /* Discord's brand color */
+            background-color: gray;
             color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             margin-top: 20px;
+            position: absolute;
+            top: 10px;
+            left: 110px; /* Adjust as needed to position the button next to the logo */
         }
     </style>
 </head>
 <body>
     <img id="discord-logo" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/discord-logo-logodownload-download-logotipos-1.png" alt="Discord Logo">
-    <a id="discord-button" href="https://discord.com/invite/q8w8BkVu5b" target="_blank">Join our Discord Server</a>
+    <a id="discord-button" href="https://discord.com/invite/q8w8BkVu5b" target="_blank">Server</a>
 </body>
 </html>
