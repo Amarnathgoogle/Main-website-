@@ -9,55 +9,60 @@
             margin: 0;
             padding: 0;
             background-image: url('https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/d4a72582e0b0fd5151ff072e8eb4d1bb_w200.gif');
-            background-size: cover; /* Change 'cover' to 'contain' if you want to zoom out */
+            background-size: cover;
             background-position: center;
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            position: relative; /* Needed for positioning the logo and button */
+            position: relative;
         }
 
         #discord-logo {
-            width: 60px; /* Adjust size as needed */
+            width: 60px;
             height: auto;
             position: absolute;
             top: 50%;
-            left: calc(50% - 30px);
-            border-radius: 50%; /* Make the image circular */
-            animation: slideFromLeft 2s forwards, slideUp 2s forwards; /* Animation names and fill mode */
+            left: -60px;
+            animation: slideFromLeft 3s ease-in-out forwards, spinAndScale 1s ease-in-out 3s forwards, slideUp 2s ease-in-out 4s forwards;
         }
 
         @keyframes slideFromLeft {
-            0% { left: -60px; } /* Starting position */
-            100% { left: calc(50% - 30px); } /* Middle left corner position */
+            0% { left: -60px; }
+            50% { left: calc(50% - 30px); }
+            100% { left: calc(50% - 30px); }
+        }
+
+        @keyframes spinAndScale {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         @keyframes slideUp {
-            0% { opacity: 0; top: 50%; } /* Starting position */
-            100% { opacity: 1; top: 20%; } /* Final position */
+            0% { opacity: 0; top: 100%; }
+            100% { opacity: 1; top: 10%; }
         }
 
-        #about-me {
+        #black-box {
+            width: 200px;
+            height: 100px;
+            background-color: black;
+            color: white;
             position: absolute;
-            top: 70%;
-            text-align: center;
-            font-size: 18px;
-            opacity: 0; /* Initially hidden */
-            animation: slideUp 2s forwards; /* Animation name and fill mode */
+            bottom: 0;
+            opacity: 0;
+            animation: slideUpBlackBox 2s ease-in-out 4s forwards;
+        }
+
+        @keyframes slideUpBlackBox {
+            0% { opacity: 0; bottom: -100px; }
+            100% { opacity: 1; bottom: 50%; }
         }
     </style>
 </head>
 <body>
     <img id="discord-logo" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/2a92a626bd0baf66285bb1ba538531c3.png" alt="Discord Logo">
-    <div id="about-me">
-        <p>Name: Google</p>
-        <p>Age: 17</p>
-        <p>Gender: Male</p>
-        <p>Status: Not Taken</p>
-        <p>Loves to code 😀</p>
-        <p>Like to play a Pokemon bot named Myuu</p>
-    </div>
+    <div id="black-box">Google</div>
 </body>
 </html>
