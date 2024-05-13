@@ -23,10 +23,10 @@
             width: 100px; /* Adjust size as needed */
             height: 100px; /* Ensure it's a square */
             position: absolute;
-            top: 50%;
-            right: 20px; /* Starting position from the right */
-            transform: translate(0, -50%);
-            animation: slideToMiddle 1s ease-in-out forwards, spinToCircle 1s ease-in-out 1s forwards, slideUp 2s ease-in-out 2s forwards; /* Animation names, duration, and fill mode */
+            top: 20%; /* Position from the top */
+            right: 50%; /* Position horizontally centered */
+            transform: translateX(50%);
+            animation: slideToMiddle 1s ease-in-out forwards, moveUp 1s ease-in-out 1s forwards; /* Animation names, duration, and fill mode */
         }
 
         @keyframes slideToMiddle {
@@ -34,14 +34,9 @@
             100% { right: 50%; }
         }
 
-        @keyframes spinToCircle {
-            0% { transform: translate(0, -50%) rotate(0deg); }
-            100% { transform: translate(0, -50%) rotate(360deg); border-radius: 50%; }
-        }
-
-        @keyframes slideUp {
-            0% { opacity: 0; top: calc(50% + 50px); } /* Starting position */
-            100% { opacity: 1; top: calc(50% - 50px); } /* Final position */
+        @keyframes moveUp {
+            0% { top: 20%; }
+            100% { top: 10%; }
         }
 
         #about-me {
@@ -51,18 +46,23 @@
             border-radius: 10px; /* Add rounded corners to the box */
             text-align: center;
             position: absolute;
-            top: calc(50% + 50px); /* Position below the logo with spacing */
+            top: 30%; /* Position from the top */
             right: 50%; /* Position horizontally centered */
             transform: translateX(50%); /* Center the box horizontally */
             opacity: 0; /* Initially hidden */
             color: #fff; /* Text color */
             animation: slideUp 2s ease-in-out 2s forwards; /* Animation name, duration, and fill mode */
         }
+
+        @keyframes slideUp {
+            0% { opacity: 0; top: 30%; } /* Starting position */
+            100% { opacity: 1; top: 20%; } /* Final position */
+        }
     </style>
 </head>
 <body>
-    <img id="discord-logo" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/2a92a626bd0baf66285bb1ba538531c3.png" alt="Discord Logo">
     <div id="about-me">
+        <img id="discord-logo" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/2a92a626bd0baf66285bb1ba538531c3.png" alt="Discord Logo">
         <p>Name: Google</p>
         <p>Age: 17</p>
         <p>Gender: Male</p>
