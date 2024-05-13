@@ -8,27 +8,38 @@
         body {
             margin: 0;
             padding: 0;
-            background-image: url('https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/e23817f641839282ad7fefa60c0ea996.gif'); /* Replace 'background.jpg' with the path to your background image */
-            background-size: cover;
+            background-image: url('https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/e23817f641839282ad7fefa60c0ea996.gif');
+            background-size: contain; /* Change 'contain' to 'cover' if you want to zoom out */
             background-position: center;
             height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
         }
 
-        button {
+        #discord-logo {
+            width: 100px; /* Adjust size as needed */
+            height: auto;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        #discord-button {
             padding: 10px 20px;
             font-size: 18px;
-            background-color: #007bff;
+            background-color: #7289DA; /* Discord's brand color */
             color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <button onclick="window.location.href='https://www.youtube.com'">You are tubed</button>
+    <img id="discord-logo" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/discord-logo-logodownload-download-logotipos-1.png" alt="Discord Logo">
+    <a id="discord-button" href="https://discord.com/invite/q8w8BkVu5b" target="_blank">Join our Discord Server</a>
 </body>
 </html>
