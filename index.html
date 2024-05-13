@@ -24,9 +24,9 @@
             height: auto;
             position: absolute;
             top: 50%;
-            left: -60px;
+            left: calc(50% - 30px);
             border-radius: 50%; /* Make the image circular */
-            animation: slideFromLeft 2s forwards; /* Animation name, duration, and fill mode */
+            animation: slideFromLeft 2s forwards, slideUp 2s forwards; /* Animation names and fill mode */
         }
 
         @keyframes slideFromLeft {
@@ -34,22 +34,30 @@
             100% { left: calc(50% - 30px); } /* Middle left corner position */
         }
 
-        #discord-button {
-            padding: 8px 16px;
-            font-size: 14px;
-            background-color: gray;
-            color: #fff;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
+        @keyframes slideUp {
+            0% { opacity: 0; top: 50%; } /* Starting position */
+            100% { opacity: 1; top: 20%; } /* Final position */
+        }
+
+        #about-me {
             position: absolute;
-            top: 15px;
-            left: 80px; /* Adjust as needed to position the button next to the logo */
+            top: 70%;
+            text-align: center;
+            font-size: 18px;
+            opacity: 0; /* Initially hidden */
+            animation: slideUp 2s forwards; /* Animation name and fill mode */
         }
     </style>
 </head>
 <body>
     <img id="discord-logo" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/2a92a626bd0baf66285bb1ba538531c3.png" alt="Discord Logo">
-    <a id="discord-button" href="https://discord.com/invite/q8w8BkVu5b" target="_blank">Server</a>
+    <div id="about-me">
+        <p>Name: Google</p>
+        <p>Age: 17</p>
+        <p>Gender: Male</p>
+        <p>Status: Not Taken</p>
+        <p>Loves to code 😀</p>
+        <p>Like to play a Pokemon bot named Myuu</p>
+    </div>
 </body>
 </html>
