@@ -19,6 +19,13 @@
             position: relative;
         }
 
+        #gfx {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 9999; /* Ensure it appears above all other elements */
+        }
+
         #discord-logo {
             width: 60px;
             height: 60px;
@@ -73,6 +80,7 @@
     </style>
 </head>
 <body>
+    <img id="gfx" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/9d9a23a4d99de3a7fae1a34e5972a4b7.gif" alt="GFX">
     <img id="discord-logo" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/2a92a626bd0baf66285bb1ba538531c3.png" alt="Discord Logo">
     <div id="black-box">
         <p id="text">Name: Google<br>
