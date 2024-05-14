@@ -34,7 +34,7 @@
             width: 200px; /* 60% bigger than before */
             height: 200px; /* 60% bigger than before */
             position: absolute;
-            top: 10%; /* Adjusted to be closer to the box */
+            top: 13%; /* Adjusted to be 3% lower */
             left: calc(50% - 1% - 2%); /* Moved 2% to the left */
             animation: slideFromLeft 3s ease-in-out forwards, slideUp 2s ease-in-out 4s forwards, transformLogo 1s ease-in-out 3s forwards, moveLeft 1s ease-in-out 6s forwards, float 3s infinite alternate;
             z-index: 1; /* Place above other content */
@@ -100,8 +100,8 @@
 
         #play-button {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 13%; /* Adjusted to be 3% lower */
+            right: 2%; /* Moved 2% to the right */
             width: 50px;
             height: 50px;
             cursor: pointer;
@@ -124,11 +124,13 @@
         Games: myuu, owo, dank memer</p>
     </div>
     <div id="play-button">
-        <img id="play-icon" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/music_player_black-01-512.png" alt="Play Icon">
+        <img id="play-icon" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/play-512.png" alt="Play Icon">
     </div>
-    <audio id="audio" src="https://firebasestorage.googleapis.com/v0/b/bio-mp3-discoed.appspot.com/o/Deewane%20Hum%20Nahi%20Hote%20(Slow%20and%20Reverb)%20%20Lofi%20%20Hindi%20-%20(Slow%20and%20Reverb)%20songs%20%20Lyrical%20Audio.mp3?alt=media&token=1768ed23-0d3f-4f22-999f-26bac5860015"></audio>
     <script>
-        var audio = document.getElementById('audio');
+        var audio = document.createElement('audio');
+        audio.src = 'https://firebasestorage.googleapis.com/v0/b/bio-mp3-discoed.appspot.com/o/Deewane%20Hum%20Nahi%20Hote%20(Slow%20and%20Reverb)%20%20Lofi%20%20Hindi%20-%20(Slow%20and%20Reverb)%20songs%20%20Lyrical%20Audio.mp3?alt=media&token=1768ed23-0d3f-4f22-999f-26bac5860015';
+        audio.loop = true;
+
         var playButton = document.getElementById('play-button');
         var playIcon = document.getElementById('play-icon');
         var blackBox = document.getElementById('black-box');
@@ -136,17 +138,13 @@
         playButton.addEventListener('click', function() {
             if (audio.paused) {
                 audio.play();
-                playIcon.src = 'https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/pngtree-pause-button-on-isolated-background-png-image_4814078.png';
+                playIcon.src = 'https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/pause-xxl.png';
                 setTimeout(hideBlackBox, 25000); // Hide black box after 25 seconds
             } else {
                 audio.pause();
-                playIcon.src = 'https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/music_player_black-01-512.png';
+                playIcon.src = 'https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/play-512.png';
                 hideBlackBox();
             }
-        });
-
-        audio.addEventListener('canplaythrough', function() {
-            playButton.style.display = 'block';
         });
 
         function hideBlackBox() {
