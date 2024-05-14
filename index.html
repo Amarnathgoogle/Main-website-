@@ -97,6 +97,31 @@
             0% { width: 0; }
             100% { width: 100%; opacity: 1; }
         }
+
+        #play-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 2; /* Ensure it's above other content */
+        }
+
+        #play-button:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        #play-button::after {
+            content: "\25B6"; /* Play icon (triangle) */
+            font-size: 30px;
+            color: black;
+        }
     </style>
 </head>
 <body>
@@ -108,13 +133,24 @@
         Likes: to code<br>
         Games: myuu, owo, dank memer</p>
     </div>
+    <div id="play-button"></div>
+    <audio id="audio" src="https://firebasestorage.googleapis.com/v0/b/bio-mp3-discoed.appspot.com/o/Deewane%20Hum%20Nahi%20Hote%20(Slow%20and%20Reverb)%20%20Lofi%20%20Hindi%20-%20(Slow%20and%20Reverb)%20songs%20%20Lyrical%20Audio.mp3?alt=media&token=1768ed23-0d3f-4f22-999f-26bac5860015"></audio>
     <script>
-        var audio = new Audio('https://firebasestorage.googleapis.com/v0/b/bio-mp3-discoed.appspot.com/o/Deewane%20Hum%20Nahi%20Hote%20(Slow%20and%20Reverb)%20%20Lofi%20%20Hindi%20-%20(Slow%20and%20Reverb)%20songs%20%20Lyrical%20Audio.mp3?alt=media&token=1768ed23-0d3f-4f22-999f-26bac5860015');
+        var audio = document.getElementById('audio');
+        var playButton = document.getElementById('play-button');
+
+        playButton.addEventListener('click', function() {
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        });
 
         audio.addEventListener('canplaythrough', function() {
-            audio.play();
+            playButton.style.display = 'block';
         });
-        
+
         // Display typing animation after a delay
         setTimeout(function() {
             document.getElementById('text').style.display = 'block';
