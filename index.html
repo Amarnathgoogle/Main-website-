@@ -36,7 +36,7 @@
             position: absolute;
             top: 10%; /* Adjusted to be closer to the box */
             left: calc(50% - 1% - 2%); /* Moved 2% to the left */
-            animation: slideFromLeft 3s ease-in-out forwards, slideUp 2s ease-in-out 4s forwards, transformLogo 1s ease-in-out 3s forwards, spin 1s ease-in-out 4s forwards, moveLeft 1s ease-in-out 6s forwards, float 3s infinite alternate;
+            animation: slideFromLeft 3s ease-in-out forwards, slideUp 2s ease-in-out 4s forwards, transformLogo 1s ease-in-out 3s forwards, moveLeft 1s ease-in-out 6s forwards, float 3s infinite alternate;
         }
 
         @keyframes slideFromLeft {
@@ -48,11 +48,6 @@
         @keyframes transformLogo {
             0% { transform: scale(1); }
             100% { transform: scale(0.5); border-radius: 50%; }
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
 
         @keyframes slideUp {
@@ -93,6 +88,7 @@
             font-size: 20px; /* Increased font size */
             opacity: 0; /* Initially hidden */
             animation: typing 4s steps(20, end) 6.5s forwards; /* Adjusted animation timing */
+            color: rgba(255, 255, 255, 0.9); /* Brighter text color */
         }
 
         @keyframes typing {
