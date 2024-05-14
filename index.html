@@ -104,23 +104,13 @@
             right: 10px;
             width: 50px;
             height: 50px;
-            background-color: rgba(255, 255, 255, 0.7);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             cursor: pointer;
-            z-index: 2; /* Ensure it's above other content */
+            z-index: 2;
         }
 
-        #play-button:hover {
-            background-color: rgba(255, 255, 255, 0.9);
-        }
-
-        #play-button::after {
-            content: "\25B6"; /* Play icon (triangle) */
-            font-size: 30px;
-            color: black;
+        #play-button img {
+            width: 100%;
+            height: auto;
         }
     </style>
 </head>
@@ -133,23 +123,35 @@
         Likes: to code<br>
         Games: myuu, owo, dank memer</p>
     </div>
-    <div id="play-button"></div>
+    <div id="play-button">
+        <img id="play-icon" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/music_player_black-01-512.png" alt="Play Icon">
+    </div>
     <audio id="audio" src="https://firebasestorage.googleapis.com/v0/b/bio-mp3-discoed.appspot.com/o/Deewane%20Hum%20Nahi%20Hote%20(Slow%20and%20Reverb)%20%20Lofi%20%20Hindi%20-%20(Slow%20and%20Reverb)%20songs%20%20Lyrical%20Audio.mp3?alt=media&token=1768ed23-0d3f-4f22-999f-26bac5860015"></audio>
     <script>
         var audio = document.getElementById('audio');
         var playButton = document.getElementById('play-button');
+        var playIcon = document.getElementById('play-icon');
+        var blackBox = document.getElementById('black-box');
 
         playButton.addEventListener('click', function() {
             if (audio.paused) {
                 audio.play();
+                playIcon.src = 'https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/pngtree-pause-button-on-isolated-background-png-image_4814078.png';
+                setTimeout(hideBlackBox, 25000); // Hide black box after 25 seconds
             } else {
                 audio.pause();
+                playIcon.src = 'https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/music_player_black-01-512.png';
+                hideBlackBox();
             }
         });
 
         audio.addEventListener('canplaythrough', function() {
             playButton.style.display = 'block';
         });
+
+        function hideBlackBox() {
+            blackBox.style.display = 'none';
+        }
 
         // Display typing animation after a delay
         setTimeout(function() {
