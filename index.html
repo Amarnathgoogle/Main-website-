@@ -35,14 +35,14 @@
             height: 200px; /* 60% bigger than before */
             position: absolute;
             top: 10%; /* Adjusted to be closer to the box */
-            left: calc(50% - 60px); /* Adjusted to be centered */
+            left: calc(50% - 1%); /* Moved 2% to the left */
             animation: slideFromLeft 3s ease-in-out forwards, spinAndTransform 1s ease-in-out 3s forwards, slideUp 2s ease-in-out 4s forwards;
         }
 
         @keyframes slideFromLeft {
             0% { left: -180px; } /* Adjusted for the larger size */
-            50% { left: calc(50% - 60px); }
-            100% { left: calc(50% - 60px); }
+            50% { left: calc(50% - 60px - 1%); } /* Adjusted for the left movement */
+            100% { left: calc(50% - 60px - 1%); } /* Adjusted for the left movement */
         }
 
         @keyframes spinAndTransform {
@@ -75,6 +75,7 @@
         #text {
             padding: 20px;
             animation: typing 4s steps(20, end);
+            font-size: 20px; /* Increased font size */
         }
 
         @keyframes typing {
