@@ -95,6 +95,24 @@
             0% { width: 0; }
             100% { width: 100%; opacity: 1; }
         }
+
+        #profile-effect-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        #profile-effect-popup img {
+            max-width: 100%;
+            max-height: 100%;
+        }
     </style>
 </head>
 <body>
@@ -106,11 +124,26 @@
         Likes: to code<br>
         Games: myuu, owo, dank memer</p>
     </div>
+    <div id="profile-effect-popup">
+        <img src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/200w.gif" alt="Profile Effect">
+    </div>
     <script>
         // Display typing animation after a delay
         setTimeout(function() {
             document.getElementById('text').style.display = 'block';
         }, 6500); // Adjust the delay as needed
+
+        // Show profile effect popup
+        function showProfileEffectPopup() {
+            var popup = document.getElementById('profile-effect-popup');
+            popup.style.display = 'flex';
+            setTimeout(function() {
+                popup.style.display = 'none';
+            }, 5000); // Hide after 5 seconds
+        }
+
+        // Show profile effect popup every 30 seconds
+        setInterval(showProfileEffectPopup, 30000);
     </script>
 </body>
 </html>
