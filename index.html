@@ -85,9 +85,9 @@
 
         #text {
             padding: 20px;
-            animation: typing 4s steps(20, end);
             font-size: 20px; /* Increased font size */
             opacity: 0; /* Initially hidden */
+            animation: typing 4s steps(20, end) 6.5s forwards; /* Adjusted animation timing */
         }
 
         @keyframes typing {
@@ -105,11 +105,5 @@
         Likes: to code<br>
         Games: myuu, owo, dank memer</p>
     </div>
-    <script>
-        // Display typing animation after a delay
-        setTimeout(function() {
-            document.getElementById('text').style.display = 'block';
-        }, 6500); // Adjust the delay as needed
-    </script>
 </body>
 </html>
