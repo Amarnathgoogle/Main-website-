@@ -37,6 +37,7 @@
             top: 10%; /* Adjusted to be closer to the box */
             left: calc(50% - 1% - 2%); /* Moved 2% to the left */
             animation: slideFromLeft 3s ease-in-out forwards, slideUp 2s ease-in-out 4s forwards, transformLogo 1s ease-in-out 3s forwards, moveLeft 1s ease-in-out 6s forwards, float 3s infinite alternate;
+            z-index: 1; /* Place above other content */
         }
 
         @keyframes slideFromLeft {
@@ -76,6 +77,7 @@
             opacity: 0;
             animation: slideUpBlackBox 2s ease-in-out 4s forwards, float 3s infinite alternate;
             overflow: hidden;
+            z-index: 1; /* Place above the profile effect */
         }
 
         @keyframes slideUpBlackBox {
@@ -95,29 +97,13 @@
             0% { width: 0; }
             100% { width: 100%; opacity: 1; }
         }
-
-        #profile-effect-popup {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            overflow: hidden; /* Prevent scrolling */
-        }
-
-        #profile-effect-popup img {
-            width: 100%;
-            height: auto;
-            image-rendering: pixelated; /* Prevent image from being blurred */
-        }
     </style>
 </head>
 <body>
+    <audio autoplay loop>
+        <source src="https://firebasestorage.googleapis.com/v0/b/bio-mp3-discoed.appspot.com/o/Deewane%20Hum%20Nahi%20Hote%20(Slow%20and%20Reverb)%20Lofi%20Hindi%20-%20(Slow%20and%20Reverb)%20songs%20Lyrical%20Audio.mp3?alt=media">
+        Your browser does not support the audio element.
+    </audio>
     <img id="gfx" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/9d9a23a4d99de3a7fae1a34e5972a4b7.gif" alt="GFX">
     <img id="discord-logo" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/2a92a626bd0baf66285bb1ba538531c3.png" alt="Discord Logo">
     <div id="black-box">
@@ -126,54 +112,11 @@
         Likes: to code<br>
         Games: myuu, owo, dank memer</p>
     </div>
-    <div id="profile-effect-popup">
-        <img id="profile-effect-image" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/200w.gif" alt="Profile Effect">
-    </div>
     <script>
         // Display typing animation after a delay
         setTimeout(function() {
             document.getElementById('text').style.display = 'block';
         }, 6500); // Adjust the delay as needed
-
-        // Show profile effect popup
-        function showProfileEffectPopup() {
-            var popup = document.getElementById('profile-effect-popup');
-            popup.style.display = 'flex';
-            setTimeout(function() {
-                popup.style.display = 'none';
-            }, 5000); // Hide after 5 seconds
-
-            // Filter out specific colors in the profile effect image
-            var img = document.getElementById('profile-effect-image');
-            var canvas = document.createElement('canvas');
-            var ctx = canvas.getContext('2d');
-            canvas.width = img.width;
-            canvas.height = img.height;
-            ctx.drawImage(img, 0, 0, img.width, img.height);
-
-            var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            var data = imageData.data;
-
-            for (var i = 0; i < data.length; i += 4) {
-                // Check for specific colors (orange and black)
-                if (data[i] < 200 && data[i + 1] > 100 && data[i + 2] < 50) {
-                    // Preserve the color
-                    data[i + 3] = 255;
-                } else {
-                    // Set to transparent
-                    data[i + 3] = 0;
-                }
-            }
-
-            ctx.putImageData(imageData, 0, 0);
-            img.src = canvas.toDataURL();
-        }
-
-        // Show profile effect popup initially
-        showProfileEffectPopup();
-
-        // Show profile effect popup every 30 seconds
-        setInterval(showProfileEffectPopup, 30000);
     </script>
 </body>
 </html>
