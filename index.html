@@ -1,4 +1,4 @@
-i<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -35,14 +35,14 @@ i<!DOCTYPE html>
             height: 200px; /* 60% bigger than before */
             position: absolute;
             top: 10%; /* Adjusted to be closer to the box */
-            left: calc(50% - 1% - 25%); /* Moved 2% to the left */
-            animation: slideFromLeft 3s ease-in-out forwards, spinAndTransform 1s ease-in-out 3s forwards, slideUp 2s ease-in-out 4s forwards;
+            left: calc(50% - 1% - 2%); /* Moved 2% to the left */
+            animation: slideFromLeft 3s ease-in-out forwards, spinAndTransform 1s ease-in-out 3s forwards, slideUp 2s ease-in-out 4s forwards, moveLeft 1s ease-in-out 6s forwards;
         }
 
         @keyframes slideFromLeft {
             0% { left: -180px; } /* Adjusted for the larger size */
-            50% { left: calc(50% - 60px - 1%); } /* Adjusted for the left movement */
-            100% { left: calc(50% - 60px - 1%); } /* Adjusted for the left movement */
+            50% { left: calc(50% - 60px - 1% - 2%); } /* Adjusted for the left movement */
+            100% { left: calc(50% - 60px - 1% - 2%); } /* Adjusted for the left movement */
         }
 
         @keyframes spinAndTransform {
@@ -53,6 +53,11 @@ i<!DOCTYPE html>
         @keyframes slideUp {
             0% { opacity: 0; top: 100%; }
             100% { opacity: 1; top: 10%; }
+        }
+
+        @keyframes moveLeft {
+            0% { left: calc(50% - 60px - 1% - 2%); }
+            100% { left: calc(50% - 60px - 1% - 7%); } /* Move 5% more to the left */
         }
 
         #black-box {
