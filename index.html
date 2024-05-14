@@ -36,7 +36,7 @@
             position: absolute;
             top: 10%; /* Adjusted to be closer to the box */
             left: calc(50% - 1% - 2%); /* Moved 2% to the left */
-            animation: slideFromLeft 3s ease-in-out forwards, slideUp 2s ease-in-out 4s forwards, spinAndTransform 1s ease-in-out 3s forwards, moveLeft 1s ease-in-out 6s forwards, float 3s infinite alternate;
+            animation: slideFromLeft 3s ease-in-out forwards, slideUp 2s ease-in-out 4s forwards, transformLogo 1s ease-in-out 3s forwards, spin 1s ease-in-out 4s forwards, moveLeft 1s ease-in-out 6s forwards, float 3s infinite alternate;
         }
 
         @keyframes slideFromLeft {
@@ -45,9 +45,14 @@
             100% { left: calc(50% - 60px - 1% - 2%); } /* Adjusted for the left movement */
         }
 
-        @keyframes spinAndTransform {
+        @keyframes transformLogo {
+            0% { transform: scale(1); }
+            100% { transform: scale(0.5); border-radius: 50%; }
+        }
+
+        @keyframes spin {
             0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg) scale(1); border-radius: 50%; }
+            100% { transform: rotate(360deg); }
         }
 
         @keyframes slideUp {
@@ -105,5 +110,11 @@
         Likes: to code<br>
         Games: myuu, owo, dank memer</p>
     </div>
+    <script>
+        // Display typing animation after a delay
+        setTimeout(function() {
+            document.getElementById('text').style.display = 'block';
+        }, 6500); // Adjust the delay as needed
+    </script>
 </body>
 </html>
