@@ -107,12 +107,12 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
+            overflow: hidden; /* Prevent scrolling */
         }
 
         #profile-effect-popup img {
-            max-width: 80%; /* Adjusted max-width */
-            max-height: 80%; /* Adjusted max-height */
-            image-rendering: pixelated; /* Prevent image from being blurred */
+            width: 100%;
+            height: auto;
         }
     </style>
 </head>
