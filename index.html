@@ -113,6 +113,7 @@
         #profile-effect-popup img {
             width: 100%;
             height: auto;
+            image-rendering: pixelated; /* Prevent image from being blurred */
         }
     </style>
 </head>
@@ -126,7 +127,7 @@
         Games: myuu, owo, dank memer</p>
     </div>
     <div id="profile-effect-popup">
-        <img src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/200w.gif" alt="Profile Effect">
+        <img id="profile-effect-image" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/200w.gif" alt="Profile Effect">
     </div>
     <script>
         // Display typing animation after a delay
@@ -141,6 +142,31 @@
             setTimeout(function() {
                 popup.style.display = 'none';
             }, 5000); // Hide after 5 seconds
+
+            // Filter out specific colors in the profile effect image
+            var img = document.getElementById('profile-effect-image');
+            var canvas = document.createElement('canvas');
+            var ctx = canvas.getContext('2d');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0, img.width, img.height);
+
+            var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            var data = imageData.data;
+
+            for (var i = 0; i < data.length; i += 4) {
+                // Check for specific colors (orange and black)
+                if (data[i] < 200 && data[i + 1] > 100 && data[i + 2] < 50) {
+                    // Preserve the color
+                    data[i + 3] = 255;
+                } else {
+                    // Set to transparent
+                    data[i + 3] = 0;
+                }
+            }
+
+            ctx.putImageData(imageData, 0, 0);
+            img.src = canvas.toDataURL();
         }
 
         // Show profile effect popup initially
