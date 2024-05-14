@@ -100,7 +100,7 @@
 
         #play-button {
             position: absolute;
-            top: 13%; /* Adjusted to be 3% lower */
+            top: 16%; /* Adjusted to be 3% lower */
             right: 2%; /* Moved 2% to the right */
             width: 50px;
             height: 50px;
@@ -111,6 +111,25 @@
         #play-button img {
             width: 100%;
             height: auto;
+        }
+
+        #white-box {
+            position: absolute;
+            bottom: 70%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+            display: none;
+            animation: popup 0.5s forwards;
+        }
+
+        @keyframes popup {
+            0% { bottom: 50%; opacity: 0; }
+            100% { bottom: 70%; opacity: 1; }
         }
     </style>
 </head>
@@ -123,8 +142,11 @@
         Likes: to code<br>
         Games: myuu, owo, dank memer</p>
     </div>
-    <div id="play-button">
+    <div id="play-button" onclick="toggleMusic()">
         <img id="play-icon" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/play-512.png" alt="Play Icon">
+    </div>
+    <div id="white-box">
+        <p style="color: black;">Tap on this<br>To play music</p>
     </div>
     <script>
         var audio = document.createElement('audio');
@@ -134,27 +156,39 @@
         var playButton = document.getElementById('play-button');
         var playIcon = document.getElementById('play-icon');
         var blackBox = document.getElementById('black-box');
+        var whiteBox = document.getElementById('white-box');
 
         playButton.addEventListener('click', function() {
+            toggleMusic();
+        });
+
+        function toggleMusic() {
             if (audio.paused) {
                 audio.play();
                 playIcon.src = 'https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/pause-xxl.png';
+                hideWhiteBox();
                 setTimeout(hideBlackBox, 25000); // Hide black box after 25 seconds
             } else {
                 audio.pause();
                 playIcon.src = 'https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/play-512.png';
+                hideWhiteBox();
                 hideBlackBox();
             }
-        });
+        }
+
+        function hideWhiteBox() {
+            whiteBox.style.display = 'none';
+        }
 
         function hideBlackBox() {
             blackBox.style.display = 'none';
         }
 
-        // Display typing animation after a delay
+        // Display white box tooltip after a delay
         setTimeout(function() {
-            document.getElementById('text').style.display = 'block';
-        }, 6500); // Adjust the delay as needed
+            whiteBox.style.display = 'block';
+            setTimeout(hideWhiteBox, 25000); // Hide white box after 25 seconds
+        }, 2000); // Adjust the delay as needed
     </script>
 </body>
 </html>
