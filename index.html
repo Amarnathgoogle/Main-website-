@@ -36,12 +36,34 @@
             position: absolute;
             top: 10%; /* Adjusted to be closer to the box */
             left: calc(50% - 1% - 2%); /* Moved 2% to the left */
-            animation: floating 3s infinite alternate;
+            animation: slideFromLeft 3s ease-in-out forwards, spinAndTransform 1s ease-in-out 3s forwards, slideUp 2s ease-in-out 4s forwards, moveLeft 1s ease-in-out 6s forwards, float 3s infinite alternate;
         }
 
-        @keyframes floating {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(0, 10px); }
+        @keyframes slideFromLeft {
+            0% { left: -180px; } /* Adjusted for the larger size */
+            50% { left: calc(50% - 60px - 1% - 2%); } /* Adjusted for the left movement */
+            100% { left: calc(50% - 60px - 1% - 2%); } /* Adjusted for the left movement */
+        }
+
+        @keyframes spinAndTransform {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); border-radius: 50%; }
+        }
+
+        @keyframes slideUp {
+            0% { opacity: 0; top: 100%; }
+            100% { opacity: 1; top: 10%; }
+        }
+
+        @keyframes moveLeft {
+            0% { left: calc(50% - 60px - 1% - 2%); }
+            100% { left: calc(50% - 60px - 1% - 4%); } /* Move 4% to the left */
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
         }
 
         #black-box {
@@ -52,7 +74,7 @@
             position: absolute;
             bottom: -200px;
             opacity: 0;
-            animation: slideUpBlackBox 2s ease-in-out 4s forwards, floating 3s infinite alternate;
+            animation: slideUpBlackBox 2s ease-in-out 4s forwards, float 3s infinite alternate;
             overflow: hidden;
         }
 
