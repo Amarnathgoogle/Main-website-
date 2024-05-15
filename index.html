@@ -36,32 +36,91 @@
             position: absolute;
             top: 10%; /* Adjusted to be closer to the box */
             left: calc(50% - 1% - 2%); /* Moved 2% to the left */
-            cursor: pointer;
+            animation: slideFromLeft 3s ease-in-out forwards, slideUp 2s ease-in-out 4s forwards, transformLogo 1s ease-in-out 3s forwards, moveLeft 1s ease-in-out 6s forwards, float 3s infinite alternate;
             z-index: 1; /* Place above other content */
         }
 
-        #play-icon {
+        @keyframes slideFromLeft {
+            0% { left: -180px; } /* Adjusted for the larger size */
+            50% { left: calc(50% - 60px - 1% - 2%); } /* Adjusted for the left movement */
+            100% { left: calc(50% - 60px - 1% - 2%); } /* Adjusted for the left movement */
+        }
+
+        @keyframes transformLogo {
+            0% { transform: scale(1); }
+            100% { transform: scale(0.5); border-radius: 50%; }
+        }
+
+        @keyframes slideUp {
+            0% { opacity: 0; top: 100%; }
+            100% { opacity: 1; top: 10%; }
+        }
+
+        @keyframes moveLeft {
+            0% { left: calc(50% - 60px - 1% - 2%); }
+            100% { left: calc(50% - 60px - 1% - 4%); } /* Move 4% to the left */
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        #black-box {
+            width: 500px;
+            height: 500px;
+            background-color: rgba(0, 0, 0, 0.5); /* Gray color with 50% transparency */
+            color: white;
+            position: absolute;
+            bottom: -200px;
+            opacity: 0;
+            animation: slideUpBlackBox 2s ease-in-out 4s forwards, float 3s infinite alternate;
+            overflow: hidden;
+            z-index: 1; /* Place above the profile effect */
+        }
+
+        @keyframes slideUpBlackBox {
+            0% { opacity: 0; bottom: -200px; }
+            100% { opacity: 1; bottom: 50%; }
+        }
+
+        #text {
+            padding: 20px;
+            font-size: 20px; /* Increased font size */
+            opacity: 0; /* Initially hidden */
+            animation: typing 4s steps(20, end) 6.5s forwards; /* Adjusted animation timing */
+            color: rgba(255, 255, 255, 0.9); /* Brighter text color */
+        }
+
+        @keyframes typing {
+            0% { width: 0; }
+            100% { width: 100%; opacity: 1; }
+        }
+
+        #play-button {
+            position: absolute;
+            top: calc(3% + 50px); /* 3% lower than top corner */
+            right: 10px;
             width: 50px;
-            height: auto;
+            height: 50px;
+            background-image: url('https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/play-512.png');
+            background-size: cover;
+            cursor: pointer;
+            z-index: 2; /* Above other content */
         }
 
         #white-box {
             position: absolute;
-            bottom: 70%;
-            left: 50%;
-            transform: translateX(-50%);
+            top: calc(3% + 110px); /* Just below the play button */
+            right: 10px;
+            width: 150px;
+            height: 50px;
             background-color: white;
-            padding: 10px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            z-index: 2;
             display: none;
-            animation: popup 0.5s forwards;
-        }
-
-        @keyframes popup {
-            0% { bottom: 50%; opacity: 0; }
-            100% { bottom: 70%; opacity: 1; }
+            padding: 10px;
+            z-index: 2; /* Above other content */
         }
     </style>
 </head>
@@ -74,55 +133,39 @@
         Likes: to code<br>
         Games: myuu, owo, dank memer</p>
     </div>
-    <div id="play-button" onclick="toggleMusic()">
-        <img id="play-icon" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/play-512.png" alt="Play Icon">
-    </div>
+    <div id="play-button"></div>
     <div id="white-box">
-        <p style="color: black;">Tap on this<br>To play music</p>
+        <p style="color: black;">Press this button to play music</p>
     </div>
+    <audio id="audio" src="https://firebasestorage.googleapis.com/v0/b/bio-mp3-discoed.appspot.com/o/Deewane%20Hum%20Nahi%20Hote%20(Slow%20and%20Reverb)%20%20Lofi%20%20Hindi%20-%20(Slow%20and%20Reverb)%20songs%20%20Lyrical%20Audio.mp3?alt=media&token=1768ed23-0d3f-4f22-999f-26bac5860015"></audio>
     <script>
-        var audio = document.createElement('audio');
-        audio.src = 'https://firebasestorage.googleapis.com/v0/b/bio-mp3-discoed.appspot.com/o/Deewane%20Hum%20Nahi%20Hote%20(Slow%20and%20Reverb)%20%20Lofi%20%20Hindi%20-%20(Slow%20and%20Reverb)%20songs%20%20Lyrical%20Audio.mp3?alt=media&token=1768ed23-0d3f-4f22-999f-26bac5860015';
-        audio.loop = true;
-
+        var audio = document.getElementById('audio');
         var playButton = document.getElementById('play-button');
-        var playIcon = document.getElementById('play-icon');
-        var blackBox = document.getElementById('black-box');
         var whiteBox = document.getElementById('white-box');
 
-        playButton.addEventListener('click', function(event) {
-            event.stopPropagation(); // Prevent the click event from bubbling up to the body
-            toggleMusic();
-        });
-
-        document.body.addEventListener('click', function() {
-            hideWhiteBox();
-        });
-
-        function toggleMusic() {
+        playButton.addEventListener('click', function() {
             if (audio.paused) {
                 audio.play();
-                playIcon.src = 'https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/pause-xxl.png';
-                hideWhiteBox();
-                setTimeout(hideBlackBox, 25000); // Hide black box after 25 seconds
+                playButton.style.backgroundImage = "url('https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/pause-xxl.png')";
+                whiteBox.style.display = 'none';
             } else {
                 audio.pause();
-                playIcon.src = 'https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/play-512.png';
-                hideBlackBox();
+                playButton.style.backgroundImage = "url('https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/play-512.png')";
             }
-        }
+        });
 
-        function showWhiteBox() {
+        audio.addEventListener('canplaythrough', function() {
+            playButton.style.display = 'block';
             whiteBox.style.display = 'block';
-        }
+            setTimeout(function() {
+                whiteBox.style.display = 'none';
+            }, 10000); // White box disappears after 10 seconds
+        });
 
-        function hideWhiteBox() {
-            whiteBox.style.display = 'none';
-        }
-
-        function hideBlackBox() {
-            blackBox.style.display = 'none';
-        }
+        // Display typing animation after a delay
+        setTimeout(function() {
+            document.getElementById('text').style.display = 'block';
+        }, 6500); // Adjust the delay as needed
     </script>
 </body>
 </html>
