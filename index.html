@@ -67,8 +67,18 @@
             100% { transform: translateY(0); }
         }
 
+        #play-pause-button {
+            position: absolute;
+            top: 3%; /* 3% from the top */
+            right: 3%; /* 3% from the right */
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1; /* Place above other content */
+        }
+
         #black-box {
-            width: 500px;
+            width: calc(500px + 3%); /* 3% bigger than before */
             height: auto; /* Adjusted for dynamic height */
             background-color: rgba(0, 0, 0, 0.5); /* Gray color with 50% transparency */
             color: white;
@@ -104,7 +114,9 @@
 <body>
     <img id="gfx" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/9d9a23a4d99de3a7fae1a34e5972a4b7.gif" alt="GFX">
     <img id="discord-logo" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/2a92a626bd0baf66285bb1ba538531c3.png" alt="Discord Logo">
-    <button id="play-pause-button" onclick="togglePlayPause()">Play</button> <!-- Play button -->
+    <button id="play-pause-button" onclick="togglePlayPause()">
+        <img id="play-pause-img" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/play-512.png" alt="Play">
+    </button>
     <div id="white-box">
         <p id="white-text">Press this button to play the music</p>
     </div>
@@ -124,18 +136,17 @@
     <audio id="audio" src="https://firebasestorage.googleapis.com/v0/b/bio-mp3-discoed.appspot.com/o/Deewane%20Hum%20Nahi%20Hote%20(Slow%20and%20Reverb)%20%20Lofi%20%20Hindi%20-%20(Slow%20and%20Reverb)%20songs%20%20Lyrical%20Audio.mp3?alt=media&token=1768ed23-0d3f-4f22-999f-26bac5860015"></audio>
     <script>
         var audio = document.getElementById('audio');
+        var playPauseButton = document.getElementById('play-pause-button');
+        var playPauseImg = document.getElementById('play-pause-img');
 
         function togglePlayPause() {
-            var button = document.getElementById('play-pause-button');
-            var whiteBox = document.getElementById('white-box');
-
             if (audio.paused) {
                 audio.play();
-                button.textContent = 'Pause';
-                whiteBox.style.display = 'none'; // Hide the white box when music is played
+                playPauseImg.src = "https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/pause-xxl.png";
+                document.getElementById('white-box').style.display = 'none'; // Hide the white box when music is played
             } else {
                 audio.pause();
-                button.textContent = 'Play';
+                playPauseImg.src = "https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/play-512.png";
             }
         }
 
