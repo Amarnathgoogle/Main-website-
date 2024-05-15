@@ -69,7 +69,7 @@
 
         #play-pause-button {
             position: absolute;
-            top: 3%; /* 3% from the top */
+            top: 6%; /* 3% lower than top */
             right: 3%; /* 3% from the right */
             background: transparent;
             border: none;
@@ -77,8 +77,19 @@
             z-index: 1; /* Place above other content */
         }
 
+        #white-box {
+            position: absolute;
+            top: 9%; /* 6% lower than top */
+            right: 3%; /* 3% from the right */
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+            display: block; /* Initially display the white box */
+            z-index: 1; /* Place above other content */
+        }
+
         #black-box {
-            width: calc(500px + 3%); /* 3% bigger than before */
+            width: calc(500px + 5%); /* 5% bigger than before */
             height: auto; /* Adjusted for dynamic height */
             background-color: rgba(0, 0, 0, 0.5); /* Gray color with 50% transparency */
             color: white;
@@ -101,8 +112,11 @@
             font-size: 20px; /* Increased font size */
             opacity: 0; /* Initially hidden */
             animation: typing 4s steps(20, end) 6.5s forwards; /* Adjusted animation timing */
-            color: rgba(255, 215, 0, 0.9); /* Gold text color */
-            font-weight: bold; /* Bold font */
+            color: rgba(255, 255, 255, 0.9); /* Brighter text color */
+        }
+
+        #white-text {
+            color: black; /* Black text color */
         }
 
         @keyframes typing {
