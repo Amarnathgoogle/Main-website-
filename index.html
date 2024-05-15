@@ -98,19 +98,29 @@
             100% { width: 100%; opacity: 1; }
         }
 
-        /* New styles for black box text */
-        #profile-info {
-            font-weight: bold;
-            color: gold;
-            overflow-y: auto;
-            max-height: 200px; /* Limit the height for scrolling */
-            padding: 10px;
+        #play-button {
+            position: absolute;
+            top: calc(3% + 50px); /* 3% lower than top corner */
+            right: 10px;
+            width: 50px;
+            height: 50px;
+            background-image: url('https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/play-512.png');
+            background-size: cover;
+            cursor: pointer;
+            z-index: 2; /* Above other content */
         }
 
-        #extra-info {
-            color: white;
-            font-family: Arial, sans-serif;
+        #white-box {
+            position: absolute;
+            top: calc(3% + 110px); /* Just below the play button */
+            right: 10px;
+            width: 150px;
+            height: 50px;
+            background-color: white;
+            border-radius: 10px;
+            display: none;
             padding: 10px;
+            z-index: 2; /* Above other content */
         }
     </style>
 </head>
@@ -118,30 +128,23 @@
     <img id="gfx" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/9d9a23a4d99de3a7fae1a34e5972a4b7.gif" alt="GFX">
     <img id="discord-logo" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/2a92a626bd0baf66285bb1ba538531c3.png" alt="Discord Logo">
     <div id="black-box">
-        <div id="profile-info">
-            <p>
-                <span>୨୧┇Name:</span> Google<br>
-                <span>୨୧┇Gender:</span> Male<br>
-                <span>୨୧┇Sexuality:</span> Straight<br>
-                <span>୨୧┇Age:</span> 17<br>
-                <span>୨୧┇Status:</span> Single<br>
-                <span>୨୧┇Interests:</span> Coding, Random Games In Discord<br>
-                <span>୨୧┇Discord Dm:</span> Open<br>
-                <span>୨୧┇Fav Song:</span> deewane hum nahi hote
-            </p>
-        </div>
-        <div id="extra-info">
-            <p>
-                <span style="font-style: italic;">Extra:</span><br>
-                I am a person who likes to code random stuff, I personally own a rice shop in real life. I live in India, state Hyderabad. Most people think I don't know spellings but the reality is, Google is an inscription word from the biggest number and some people think that's a spelling mistake, and I personally think it's a spelling mistake so when I am in my character I intentionally do spelling mistakes. Some people might know me as Jack if you belong from my Roblox era.<br>
-                A person introduced me to Discord a long time ago. I used to play Among Us at that time, for voice chat I joined Discord, and now I am addicted to it.
-            </p>
-        </div>
+        <p id="text">୨୧┇<strong>Name</strong>: Google<br>
+୨୧┇<strong>Gender</strong>: Male<br>
+୨୧┇<strong>Sexuality</strong>: Straight<br>
+୨୧┇<strong>Age</strong>: 17<br>
+୨୧┇<strong>Status</strong>: Single<br>
+୨୧┇<strong>Interests</strong>: Coding, Random Games In Discord<br>
+୨୧┇<strong>Discord Dm Open</strong><br>
+୨୧┇<strong>fav song</strong>: deewane hum nahi hote</p>
+        <p style="font-family: cursive; color: white;">Extra:<br>
+I am a person who likes to code random stuff, i personally own a rice  shop in real life. I live in India state Hyderabad. Most people think I don't know speelings but the reality is, Google is a inscription word from the biggest number and some people think that a speeling mistake and I personally think it's a speeling mistake so when I am in my charector I wantedly do speeling mistakes. Some people might know me as jack if you belong from my robolx era,<br>
+A person introduced me to discord a long ago I used to play among us at that time, for voice chat i joined discord and now I am addicted to it.
+</p>
     </div>
+    <div id="play-button"></div>
     <div id="white-box">
         <p style="color: black;">Press this button to play music</p>
     </div>
-    <div id="play-button"></div>
     <audio id="audio" src="https://firebasestorage.googleapis.com/v0/b/bio-mp3-discoed.appspot.com/o/Deewane%20Hum%20Nahi%20Hote%20(Slow%20and%20Reverb)%20%20Lofi%20%20Hindi%20-%20(Slow%20and%20Reverb)%20songs%20%20Lyrical%20Audio.mp3?alt=media&token=1768ed23-0d3f-4f22-999f-26bac5860015"></audio>
     <script>
         var audio = document.getElementById('audio');
