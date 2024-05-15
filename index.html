@@ -30,43 +30,6 @@
             pointer-events: none; /* Prevent interaction with the rain GIF */
         }
 
-        #discord-logo {
-            width: 200px; /* 60% bigger than before */
-            height: 200px; /* 60% bigger than before */
-            position: absolute;
-            top: 10%; /* Adjusted to be closer to the box */
-            left: calc(50% - 1% - 2%); /* Moved 2% to the left */
-            animation: slideFromLeft 3s ease-in-out forwards, slideUp 2s ease-in-out 4s forwards, transformLogo 1s ease-in-out 3s forwards, moveLeft 1s ease-in-out 6s forwards, float 3s infinite alternate;
-            z-index: 1; /* Place above other content */
-        }
-
-        @keyframes slideFromLeft {
-            0% { left: -180px; } /* Adjusted for the larger size */
-            50% { left: calc(50% - 60px - 1% - 2%); } /* Adjusted for the left movement */
-            100% { left: calc(50% - 60px - 1% - 2%); } /* Adjusted for the left movement */
-        }
-
-        @keyframes transformLogo {
-            0% { transform: scale(1); }
-            100% { transform: scale(0.5); border-radius: 50%; }
-        }
-
-        @keyframes slideUp {
-            0% { opacity: 0; top: 100%; }
-            100% { opacity: 1; top: 10%; }
-        }
-
-        @keyframes moveLeft {
-            0% { left: calc(50% - 60px - 1% - 2%); }
-            100% { left: calc(50% - 60px - 1% - 4%); } /* Move 4% to the left */
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0); }
-        }
-
         #play-pause-button {
             position: absolute;
             top: 6%; /* 3% lower than top */
@@ -75,97 +38,77 @@
             border: none;
             cursor: pointer;
             z-index: 1; /* Place above other content */
-            width: 70px; /* Make button 20px wide */
-            height: 70px; /* Make button 20px high */
-        }
-
-        #white-box {
-            position: absolute;
-            top: 12%; /* 9% lower than top */
-            right: 3%; /* 3% from the right */
-            background-color: white;
-            padding: 10px;
-            border-radius: 5px;
-            display: block; /* Initially display the white box */
-            z-index: 1; /* Place above other content */
+            width: 20px; /* Make button 20px wide */
+            height: 20px; /* Make button 20px high */
         }
 
         #black-box {
-    height: 500px; /* Increase the height of the black box */
-    display: flex; /* Use flexbox to align text vertically */
-    justify-content: center; /* Center the text horizontally */
-    align-items: center; /* Center the text vertically */
-}
+            width: 500px;
+            height: 500px;
+            background-color: rgba(0, 0, 0, 0.5); /* Gray color with 50% transparency */
+            color: white;
+            position: absolute;
+            bottom: 0;
+            opacity: 0;
+            animation: slideUpBlackBox 2s ease-in-out 4s forwards, float 3s infinite alternate;
+            overflow: hidden;
+            z-index: 1; /* Place above the profile effect */
+            padding: 20px; /* Add padding to center the text */
+        }
 
         @keyframes slideUpBlackBox {
             0% { opacity: 0; bottom: -200px; }
-            100% { opacity: 1; bottom: 50%; }
+            100% { opacity: 1; bottom: 0; }
         }
 
         #text {
-            padding: 20px;
-            font-size: 20px; /* Increased font size */
-            opacity: 0; /* Initially hidden */
-            animation: typing 4s steps(20, end) 6.5s forwards; /* Adjusted animation timing */
-            color: rgba(255, 255, 255, 0.9); /* Brighter text color */
+            font-size: 16px; /* Increased font size */
+            font-weight: bold; /* Added bold font */
         }
 
         #white-text {
-            color: black; /* Black text color */
+            position: absolute;
+            top: 10%; /* Adjusted position */
+            right: 3%; /* Adjusted position */
+            color: white;
+            opacity: 1; /* Ensure it's visible */
+            z-index: 1; /* Place above other content */
+            animation: fadeOut 10s forwards; /* Animation to fade out after 10s */
         }
 
-        @keyframes typing {
-            0% { width: 0; }
-            100% { width: 100%; opacity: 1; }
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
         }
     </style>
 </head>
 <body>
     <img id="gfx" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/9d9a23a4d99de3a7fae1a34e5972a4b7.gif" alt="GFX">
-    <img id="discord-logo" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/2a92a626bd0baf66285bb1ba538531c3.png" alt="Discord Logo">
-    <button id="play-pause-button" onclick="togglePlayPause()">
-        <img id="play-pause-img" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/play-512.png" alt="Play" width="100%">
+    <button id="play-pause-button">
+        <img id="play-pause-icon" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/play-512.png" alt="Play">
     </button>
-    <div id="white-box">
-        <p id="white-text">Press this<br>To play music</p>
-    </div>
     <div id="black-box">
-        <div id="black-box">
-    <p id="text">
-        <span style="color: gold;">୨୧┇Name: Google</span><br>
-        <span style="color: blue;">୨୧┇Gender: Male</span><br>
-        <span style="color: green;">୨୧┇Sexuality: Straight</span><br>
-        <span style="color: red;">୨୧┇Age: 17</span><br>
-        <span style="color: purple;">୨୧┇Status: Single</span><br>
-        <span style="color: orange;">୨୧┇Interests: Coding, Random Games In Discord</span><br>
-        <span style="color: teal;">୨୧┇Discord Dm Open</span><br>
-        <span style="color: yellow;">୨୧┇fav song: Deewane Hum Nahi Hote</span>
-    </p>
-    <p style="color: white;">Extra:-<br>
-    I am a person who likes to code random stuff, I personally own a rice shop in real life. I live in India state Hyderabad. Most people think I don't know spellings but the reality is, Google is an inscription word from the biggest number and some people think that a spelling mistake and I personally think it's a spelling mistake so when I am in my character I wantedly do spelling mistakes. Some people might know me as jack if you belong from my robolx era,
-    A person introduced me to discord a long ago I used to play among us at that time, for voice chat I joined discord and now I am addicted to it.</p>
-</div>
-
-    <audio id="audio" src="https://firebasestorage.googleapis.com/v0/b/bio-mp3-discoed.appspot.com/o/Deewane%20Hum%20Nahi%20Hote%20(Slow%20and%20Reverb)%20%20Lofi%20%20Hindi%20-%20(Slow%20and%20Reverb)%20songs%20%20Lyrical%20Audio.mp3?alt=media&token=1768ed23-0d3f-4f22-999f-26bac5860015"></audio>
+        <p id="text">
+            <span style="color: gold;">୨୧┇Name: Google</span><br>
+            <span style="color: blue;">୨୧┇Gender: Male</span><br>
+            <span style="color: green;">୨୧┇Sexuality: Straight</span><br>
+            <span style="color: red;">୨୧┇Age: 17</span><br>
+            <span style="color: purple;">୨୧┇Status: Single</span><br>
+            <span style="color: orange;">୨୧┇Interests: Coding, Random Games In Discord</span><br>
+            <span style="color: teal;">୨୧┇Discord Dm Open</span><br>
+            <span style="color: yellow;">୨୧┇fav song: Deewane Hum Nahi Hote</span>
+        </p>
+        <p style="color: white;">
+            Extra:-<br>
+            I am a person who likes to code random stuff, I personally own a rice shop in real life. I live in India state Hyderabad. Most people think I don't know spellings but the reality is, Google is an inscription word from the biggest number and some people think that a spelling mistake and I personally think it's a spelling mistake so when I am in my character I wantedly do spelling mistakes. Some people might know me as jack if you belong from my robolx era,
+            A person introduced me to discord a long ago I used to play among us at that time, for voice chat I joined discord and now I am addicted to it.
+        </p>
+    </div>
+    <p id="white-text">Press this<br>To play music</p>
     <script>
-        var audio = document.getElementById('audio');
-        var playPauseButton = document.getElementById('play-pause-button');
-        var playPauseImg = document.getElementById('play-pause-img');
-
-        function togglePlayPause() {
-            if (audio.paused) {
-                audio.play();
-                playPauseImg.src = "https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/pause-xxl.png";
-                document.getElementById('white-box').style.display = 'none'; // Hide the white box when music is played
-            } else {
-                audio.pause();
-                playPauseImg.src = "https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/play-512.png";
-            }
-        }
-
         // Display typing animation after a delay
         setTimeout(function() {
-            document.getElementById('text').style.opacity = '1';
+            document.getElementById('text').style.display = 'block';
         }, 6500); // Adjust the delay as needed
     </script>
 </body>
