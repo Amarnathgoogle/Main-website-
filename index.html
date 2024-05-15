@@ -99,32 +99,89 @@
             0% { width: 0; }
             100% { width: 100%; opacity: 1; }
         }
+
+        #play-button {
+            position: absolute;
+            top: 3%; /* Adjusted from the top */
+            right: 3%; /* Adjusted from the right */
+            z-index: 2; /* Place above other content */
+            cursor: pointer; /* Show pointer cursor on hover */
+        }
+
+        #play-button img {
+            width: 50px; /* Set width of the button image */
+            height: 50px; /* Set height of the button image */
+        }
+
+        #white-box {
+            position: absolute;
+            top: calc(3% + 60px); /* Adjusted from the top including the play button height */
+            right: 3%; /* Adjusted from the right */
+            width: 200px; /* Set width of the box */
+            height: 60px; /* Set height of the box */
+            background-color: white; /* White background color */
+            border-radius: 10px; /* Rounded corners */
+            display: none; /* Initially hidden */
+            z-index: 2; /* Place above other content */
+            text-align: center; /* Center align text */
+            line-height: 60px; /* Center vertical alignment of text */
+        }
     </style>
 </head>
 <body>
     <img id="gfx" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/9d9a23a4d99de3a7fae1a34e5972a4b7.gif" alt="GFX">
     <img id="discord-logo" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/2a92a626bd0baf66285bb1ba538531c3.png" alt="Discord Logo">
     <div id="black-box">
-        <p id="text"><span style="color: gold;"><strong>୨୧┇Name : Google<br>
+        <p id="text">୧┇Name : Google<br>
 Gender: Male<br>
 Sexuality : Straight<br>
 Age: 17<br>
 Status : Single<br>
 Interests: Coding , Random Games In Discord<br>
 Discord Dm Open<br>
-fav song :- deewane hum nahi hote</strong></span><br>
-<br>
+fav song :- deewane hum nahi hote<br>
 <span style="color: white;">
 Extra:-
 I am a person who likes to code random stuff, i personally own a rice  shop in real life. I live in India state Hyderabad. Most people think I don't know speelings but the reality is, Google is a inscription word from the biggest number and some people think that a speeling mistake and I personally think it's a speeling mistake so when I am in my charector I wantedly do speeling mistakes. Some people might know me as jack if you belong from my robolx era,
 A person introduced me to discord a long ago I used to play among us at that time, for voice chat i joined discord and now I am addicted to it.
 </span></p>
     </div>
+    <div id="white-box">
+        <p>Press this button to play music</p>
+    </div>
+    <div id="play-button">
+        <img id="music-control" src="https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/play-512.png" alt="Play Button">
+    </div>
+    <audio id="audio" src="https://firebasestorage.googleapis.com/v0/b/bio-mp3-discoed.appspot.com/o/Deewane%20Hum%20Nahi%20Hote%20(Slow%20and%20Reverb)%20%20Lofi%20%20Hindi%20-%20(Slow%20and%20Reverb)%20songs%20%20Lyrical%20Audio.mp3?alt=media&token=1768ed23-0d3f-4f22-999f-26bac5860015" loop></audio>
     <script>
         // Display typing animation after a delay
         setTimeout(function() {
             document.getElementById('text').style.display = 'block';
         }, 6500); // Adjust the delay as needed
+
+        // Get references to the play button and audio element
+        const playButton = document.getElementById('play-button');
+        const audio = document.getElementById('audio');
+
+        // Toggle play/pause functionality
+        playButton.addEventListener('click', function() {
+            if (audio.paused) {
+                audio.play();
+                document.getElementById('music-control').src = 'https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/pause-xxl.png';
+            } else {
+                audio.pause();
+                document.getElementById('music-control').src = 'https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/play-512.png';
+            }
+            // Hide white box when play button is clicked
+            document.getElementById('white-box').style.display = 'none';
+        });
+
+        // Show white box on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.getElementById('white-box').style.display = 'block';
+            }, 10000); // Display for 10 seconds
+        });
     </script>
 </body>
 </html>
