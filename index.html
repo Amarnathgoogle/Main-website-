@@ -101,15 +101,13 @@
         #play-button {
             position: absolute;
             top: 16%; /* Adjusted to be 3% lower */
-            right: 2%; /* Moved 2% to the right */
-            width: 50px;
-            height: 50px;
+            right: 2%; /* Adjusted to be 3% lower */
             cursor: pointer;
-            z-index: 2;
+            z-index: 1; /* Place above other content */
         }
 
-        #play-button img {
-            width: 100%;
+        #play-icon {
+            width: 50px;
             height: auto;
         }
 
@@ -158,8 +156,13 @@
         var blackBox = document.getElementById('black-box');
         var whiteBox = document.getElementById('white-box');
 
-        playButton.addEventListener('click', function() {
+        playButton.addEventListener('click', function(event) {
+            event.stopPropagation(); // Prevent the click event from bubbling up to the body
             toggleMusic();
+        });
+
+        document.body.addEventListener('click', function() {
+            hideWhiteBox();
         });
 
         function toggleMusic() {
@@ -172,7 +175,6 @@
                 audio.pause();
                 playIcon.src = 'https://raw.githubusercontent.com/Amarnathgoogle/Main-website-/main/play-512.png';
                 hideWhiteBox();
-                hideBlackBox();
             }
         }
 
